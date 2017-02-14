@@ -1,5 +1,7 @@
 package be.ecam.lur.student;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +22,8 @@ public class Student {
     private static ArrayList<Student> students = new ArrayList<>();
 
     public static void parse(String json) throws JSONException {
+        Log.i("Student", "beginning Parsing");
+        students.clear();
         JSONArray jsonStudents = new JSONArray(json);
 
         for (int i=0; i<jsonStudents.length(); i++) {
@@ -70,5 +74,9 @@ public class Student {
 
     public String getDivision() {
         return division;
+    }
+
+    public static int count() {
+        return students.size();
     }
 }

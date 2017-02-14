@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
 
-    private String[] mData = null;
-
     private ItemAdapterOnClickHandler clickHandler;
 
     public ItemAdapter(ItemAdapterOnClickHandler clickHandler) {
@@ -59,18 +57,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
     public void onBindViewHolder
             (ItemAdapterViewHolder itemAdapterViewHolder, int position) {
 
-        String dataForThisItem = mData[position];
+        Student student = Student.find(position);
+        String dataForThisItem = student.getName();
         itemAdapterViewHolder.mTextView.setText(dataForThisItem);
     }
 
     @Override
     public int getItemCount() {
-        if (null == mData) return 0;
-        return mData.length;
-    }
-
-    public void setData(String[] data) {
-        mData = data;
-        notifyDataSetChanged();
+        return Student.count();
     }
 }
