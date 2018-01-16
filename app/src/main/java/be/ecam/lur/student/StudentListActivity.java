@@ -59,15 +59,7 @@ public class StudentListActivity extends AppCompatActivity implements ItemAdapte
             queryURL.putString("URL","http://calendar.ecam.be/list/e");
 
             LoaderManager loaderManager = getSupportLoaderManager();
-            //Loader<String> queryLoader = loaderManager.getLoader(QUERY_LOADER);
-
-            //if(queryLoader == null) {
-            //    Log.i("StudentListActivity", "Loader don't exist");
-            //    loaderManager.initLoader(QUERY_LOADER, queryURL, this);
-            //} else {
-            //    Log.i("StudentListActivity", "Loader exist");
-                loaderManager.restartLoader(QUERY_LOADER, queryURL, this);
-            //}
+            loaderManager.restartLoader(QUERY_LOADER, queryURL, this);
 
             return true;
         }
